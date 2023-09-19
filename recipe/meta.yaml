@@ -28,8 +28,7 @@ requirements:
     - matplotlib-base
     - numpy
     - pandas
-    - scikit-learn
-    - shap
+    - venn-abers
 
 test:
   imports:
