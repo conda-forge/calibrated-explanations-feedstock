@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/calibrated_explanations-{{ version }}.tar.gz
-  sha256: 458dac966cf210c4af946bb0b58e7a9a3f2c3df10113f8ab46c914029a40ef6f
+  sha256: a19d0ce38fbb447470bf4ed49a39140985786ecc91c6bb3d7892ee6045452a4f
 
 build:
   noarch: python
