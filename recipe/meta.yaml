@@ -1,5 +1,5 @@
 {% set name = "calibrated-explanations" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/calibrated_explanations-{{ version }}.tar.gz
-  sha256: 15bba51b3fcc4276ce56cf5a7bdb2212fdbd7d627aa2440e1956c4f460a00f11
+  sha256: de31e40211bd8761315b5b6bd22516acda43caa8f685de27d38627bd33fc4a08
 
 build:
   noarch: python
@@ -21,7 +21,7 @@ requirements:
     - setuptools >=61.0
     - pip
   run:
-    - python >=3.8
+    - python >=3.9
     - crepes
     - ipython
     - lime
