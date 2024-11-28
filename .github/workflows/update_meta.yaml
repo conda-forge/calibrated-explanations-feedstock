@@ -31,13 +31,20 @@ jobs:
         git diff --exit-code recipe/meta.yaml
         echo "changed=$?" >> $GITHUB_ENV
 
+    - name: Extract new version
+      if: env.changed != '0'
+      id: extract_version
+      run: |
+        new_version=$(grep -oP '{% set version = "\K[^"]+' recipe/meta.yaml)
+        echo "new_version=$new_version" >> $GITHUB_ENV
+
     - name: Commit and push changes
       if: env.changed != '0'
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add recipe/meta.yaml
-        git commit -m 'Update meta.yaml with latest version and sha256'
+        git commit -m "calibrated-explanations v${{ env.new_version }}"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
