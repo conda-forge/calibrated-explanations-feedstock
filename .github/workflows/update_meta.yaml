@@ -29,10 +29,10 @@ jobs:
       id: git_diff
       run: |
         git diff --exit-code recipe/meta.yaml
-        echo "::set-output name=changed::$(echo $?)"
+        echo "changed=$?" >> $GITHUB_ENV
 
     - name: Commit and push changes
-      if: steps.git_diff.outputs.changed != '0'
+      if: env.changed != '0'
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
