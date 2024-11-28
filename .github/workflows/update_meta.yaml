@@ -25,11 +25,18 @@ jobs:
     - name: Update meta.yaml
       run: python update_meta.py
 
+    - name: Check for changes
+      id: git_diff
+      run: |
+        git diff --exit-code recipe/meta.yaml
+        echo "::set-output name=changed::$(echo $?)"
+
     - name: Commit and push changes
+      if: steps.git_diff.outputs.changed != '0'
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add meta.yaml
+        git add recipe/meta.yaml
         git commit -m 'Update meta.yaml with latest version and sha256'
         git push
       env:
