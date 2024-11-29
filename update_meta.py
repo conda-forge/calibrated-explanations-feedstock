@@ -21,10 +21,22 @@ if not sha256_hash:
 with open('recipe/meta.yaml', 'r') as file:
     meta_content = file.read()
 
-# Update the version and sha256 in the Jinja2 template
-meta_content = re.sub(r'{% set version = ".*?" %}', f'{{% set version = "{latest_version}" %}}', meta_content)
-meta_content = re.sub(r'sha256: .*', f'sha256: {sha256_hash}', meta_content)
+# Extract the current version from the meta.yaml file
+current_version_match = re.search(r'{% set version = "(.*?)" %}', meta_content)
+if not current_version_match:
+    raise ValueError("Could not find the current version in meta.yaml")
 
-# Write the updated meta.yaml file
-with open('recipe/meta.yaml', 'w') as file:
-    file.write(meta_content)
+current_version = current_version_match.group(1)
+
+# Check if the version has changed
+if current_version != latest_version:
+    # Update the version and sha256 in the Jinja2 template
+    meta_content = re.sub(r'{% set version = ".*?" %}', f'{{% set version = "{latest_version}" %}}', meta_content)
+    meta_content = re.sub(r'sha256: .*', f'sha256: {sha256_hash}', meta_content)
+
+    # Write the updated meta.yaml file
+    with open('recipe/meta.yaml', 'w') as file:
+        file.write(meta_content)
+    print(f"Updated meta.yaml to version {latest_version}")
+else:
+    print("No update needed, version is already up-to-date")
