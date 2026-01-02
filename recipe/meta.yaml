@@ -7,7 +7,7 @@ package:
 
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/calibrated_explanations-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/calibrated_explanations-{{ version }}.tar.gz
   sha256: 8e14a73e31c26ba75fcc58d1c7757d64215b6755648dd63659ce985a93526ea2
 
 build:
