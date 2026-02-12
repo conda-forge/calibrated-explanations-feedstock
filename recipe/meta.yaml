@@ -22,12 +22,13 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
+    - cachetools
+    - pympler
     - crepes
-    - ipython
-    - lime
-    - matplotlib-base
     - numpy
     - pandas
+    - scikit-learn
+    - pyyaml
     - venn-abers
 
 test:
