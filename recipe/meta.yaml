@@ -43,7 +43,7 @@ test:
 about:
   summary: Extract calibrated explanations from machine learning models.
   license: BSD-3-Clause
-  license_file: ../LICENSE.txt
+  license_file: LICENSE
   home: https://github.com/Moffran/calibrated_explanations
 
 extra:
