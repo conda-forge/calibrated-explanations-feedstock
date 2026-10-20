@@ -1,5 +1,5 @@
 {% set name = "calibrated-explanations" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/calibrated_explanations-{{ version }}.tar.gz
-  sha256: a70a99da2153e64161aa22662d4f15efc82af72ef3828f92eafc97142b7379c3
+  sha256: 216fbe8306c55e6cc3e17aca2bcbb86446bf72cd82e6b408576a044fe400f458
 
 build:
   noarch: python
